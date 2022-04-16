@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import HorizontalLinearStepper from "./components/Stepper";
+import { Box, Container, CssBaseline } from "@mui/material";
+import Profile from "./components/Profile";
+import Education from "./components/Education";
+import Skill from "./components/Skill";
+import Project from "./components/Project";
+import Social from "./components/Social";
+import { useSelector } from "react-redux";
 
-function App() {
+export default function App() {
+  const myState  = useSelector((state)=>state.changePageState);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <React.Fragment>
+        <CssBaseline />
+        <Container maxWidth="md">
+          <Box m={2} pt={3}>
+            <HorizontalLinearStepper />
+            {myState.currentPage === 0 ? <Profile /> : null}
+            {myState.currentPage === 1 ? <Education /> : null}
+            {myState.currentPage === 2 ? <Skill /> : null}
+            {myState.currentPage === 3 ? <Project /> : null}
+            {myState.currentPage === 4 ? <Social /> : null}
+            
+          </Box>
+        </Container>
+      </React.Fragment>
     </div>
   );
 }
-
-export default App;
