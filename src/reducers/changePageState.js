@@ -5,6 +5,7 @@ const initialState = {
   skill: [],
   project: [],
   social: [],
+  showPreview: false,
 };
 
 const changePageState = (state = initialState, action) => {
@@ -58,6 +59,11 @@ const changePageState = (state = initialState, action) => {
       return {
         ...state,
         social: action.payload,
+      };
+    case "SETSHOWPREVIEW":
+      return {
+        ...state,
+        showPreview: action.payload,
       };
     default:
       return state;

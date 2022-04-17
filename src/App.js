@@ -6,6 +6,7 @@ import Education from "./components/Education";
 import Skill from "./components/Skill";
 import Project from "./components/Project";
 import Social from "./components/Social";
+import Preview from "./components/Preview";
 import { useSelector } from "react-redux";
 
 export default function App() {
@@ -22,6 +23,8 @@ export default function App() {
             {myState.currentPage === 2 ? <Skill /> : null}
             {myState.currentPage === 3 ? <Project /> : null}
             {myState.currentPage === 4 ? <Social /> : null}
+            {myState.showPreview ? <Preview /> : null}
+            
             
           </Box>
         </Container>

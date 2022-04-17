@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import Link from "@mui/material/Link";
 import { useSelector, useDispatch } from "react-redux";
-import { nextPage, setSocial } from "../../actions/index";
+import { nextPage, setSocial, setShowPreview } from "../../actions/index";
 
 
 export default function Social() {
@@ -14,6 +14,7 @@ export default function Social() {
   const [socialList, setSocialList] = React.useState([]);
   const dispatch = useDispatch();
   const socialData = useSelector((state)=>state.changePageState.social)
+  const reduxData = useSelector((state)=>state.changePageState)
 
   const isUrlValid = (userInput) => {
     var res = userInput.match(
@@ -51,7 +52,10 @@ export default function Social() {
       return;
     }
     dispatch(setSocial(socialList));
+    dispatch(setShowPreview(true));
+    console.log("reduxData", reduxData);
     dispatch(nextPage());
+    
   }
 
   React.useEffect(()=>{

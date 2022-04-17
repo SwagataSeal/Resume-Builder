@@ -56,3 +56,10 @@ export const setSocial = (data) =>{
     }
 }
 
+export const setShowPreview = (data) =>{
+    return {
+        type : "SETSHOWPREVIEW",
+        payload : data
+    }
+}
+
